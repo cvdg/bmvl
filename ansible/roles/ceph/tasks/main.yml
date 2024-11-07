@@ -1,0 +1,20 @@
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    name: "{{ ceph_required_packages }}"
+    state: present
+ 
+- name: Add Ceph GPG key
+  ansible.builtin.apt_key:
+    url: https://download.ceph.com/keys/release.asc
+    state: present
+ 
+- name: Add Ceph repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://download.ceph.com/debian-reef/ {{ ansible_distribution_release }} main"
+    state: present
+ 
+- name: Install Ceph
+  ansible.builtin.apt:
+    name: "{{ ceph_packages }}"
+    state: present

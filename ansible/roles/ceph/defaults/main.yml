@@ -1,0 +1,8 @@
+---
+ceph_required_packages:
+  - lvm2
+
+ceph_packages:
+  - cephadm
+  - ceph
+  - ceph-common

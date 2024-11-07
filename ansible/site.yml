@@ -17,3 +17,7 @@
     - role: docker
       tags:
         - docker
+
+    - role: ceph
+      tags:
+        - ceph
