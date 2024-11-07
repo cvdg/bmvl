@@ -20,14 +20,14 @@ resource "libvirt_volume" "root" {
   name           = "${format("${var.vm_name}%02s-root", count.index + 1)}.qcow2"
   pool           = libvirt_pool.pool.name
   base_volume_id = libvirt_volume.base.id
-  size           = 1024 * 1024 * 1024 * 32 # 32 TiB
+  size           = 1024 * 1024 * 1024 * 32 # 32 GiB
 }
 
 resource "libvirt_volume" "data" {
   count  = var.vm_count
   name   = "${format("${var.vm_name}%02s-data", count.index + 1)}.qcow2"
   pool   = libvirt_pool.pool.name
-  size   = 1024 * 1024 * 1024 * 128 # 128 TiB
+  size   = 1024 * 1024 * 1024 * 128 # 128 GiB
   format = "qcow2"
 }
 
