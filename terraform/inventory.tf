@@ -1,5 +1,5 @@
 resource "local_file" "ansible_inventory" {
-  content = templatefile("inventory.tmpl",
+  content = templatefile("inventory.yml",
     {
      vms = libvirt_domain.guest.*
     }

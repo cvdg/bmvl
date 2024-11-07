@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  roles:
+    # ==========================================================
+    # Upgrade is only executed when the tag 'upgrade' is used.
+    # ==========================================================
+    - role: upgrade
+      tags:
+        - upgrade
+        - never
+    
+    - role: common
+      tags:
+        - common
+
+    - role: docker
+      tags:
+        - docker
