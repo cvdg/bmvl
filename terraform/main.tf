@@ -60,6 +60,10 @@ resource "libvirt_domain" "guest" {
   qemu_agent = true
   cloudinit  = libvirt_cloudinit_disk.cloudinit[count.index].id
 
+  cpu {
+    mode = "host-passthrough"
+  }
+
   network_interface {
     bridge         = "br0"
     wait_for_lease = true
