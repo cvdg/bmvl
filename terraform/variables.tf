@@ -1,3 +1,4 @@
+
 variable "code" {
   description = "Project code"
   type        = string
@@ -62,13 +63,13 @@ variable "vm_size" {
 }
 
 variable "vm_memory" {
-  description = "Memory of the VM (2 GiB)"
+  description = "Memory of the VM (4 GiB)"
   type        = number
-  default     = 2 * 1024
+  default     = 4 * 1024
 }
 
 variable "vm_cpus" {
-  description = "CPUs of the VM (2)"
+  description = "CPUs of the VM (4)"
   type        = number
-  default     = 2
+  default     = 4
 }

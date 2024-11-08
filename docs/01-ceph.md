@@ -1,4 +1,6 @@
-# ceph
+# 01 ceph
+
+## Problem
 
 ```shell
 # cephadm bootstrap --mon-ip 192.168.2.81
@@ -54,3 +56,16 @@ Traceback (most recent call last):
 RuntimeError: Failed command: /usr/bin/docker run --rm --ipc=host --stop-signal=SIGTERM --ulimit nofile=1048576 --net=host --entrypoint ceph --init -e CONTAINER_IMAGE=quay.io/ceph/ceph:v18 -e NODE_NAME=ceph01 -e CEPH_USE_RANDOM_NONCE=1 quay.io/ceph/ceph:v18 --version: Fatal glibc error: CPU does not support x86-64-v2
 
 ```
+
+## Solution
+
+Terraform resource `libvirt_domain`:
+```
+...
+  cpu {
+    mode = "host-passthrough"
+  }
+...
+```
+
+Recreate with: `terraform`
