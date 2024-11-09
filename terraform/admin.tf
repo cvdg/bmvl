@@ -7,7 +7,7 @@ resource "libvirt_volume" "admin" {
   size           = var.vm_size
 }
 
-data "template_file" "admin" {
+data "template_file" "admin_user_data" {
   count = var.vm_admin_count
 
   template = file("${path.module}/cloud_init.yml")
@@ -20,12 +20,23 @@ data "template_file" "admin" {
   }
 }
 
+data "template_file" "admin_network_config" {
+  count = var.vm_admin_count
+
+  template = file("${path.module}/network_config.yml")
+
+  vars = {
+    ip_address = cidrhost("192.168.2.128/25", count.index)
+  }
+}
+
 resource "libvirt_cloudinit_disk" "admin" {
   count = var.vm_admin_count
 
-  name      = "${format("${var.vm_admin_name}%02s", count.index + 1)}_cloudinit.iso"
-  user_data = data.template_file.admin[count.index].rendered #if you set network user no go
-  pool      = libvirt_pool.pool.name
+  name           = "${format("${var.vm_admin_name}%02s", count.index + 1)}_cloudinit.iso"
+  user_data      = data.template_file.admin_user_data[count.index].rendered
+  network_config = data.template_file.admin_network_config[count.index].rendered
+  pool           = libvirt_pool.pool.name
 }
 
 resource "libvirt_domain" "admin" {
