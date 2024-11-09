@@ -1,10 +1,3 @@
-
-variable "code" {
-  description = "Project code"
-  type        = string
-  default     = "bmvl"
-}
-
 variable "cloudinit_username" {
   description = "Cloud-init: Username"
   type        = string
@@ -20,10 +13,27 @@ variable "cloudinit_ssh_public_key" {
   type        = string
 }
 
-variable "vm_count" {
+variable "vm_admin_count" {
   description = "Number of VMs"
   type        = number
-  default     = 3
+  default     = 1
+}
+variable "vm_admin_name" {
+  description = "Name of the VM"
+  type        = string
+  default     = "admin"
+}
+
+variable "vm_infra_count" {
+  description = "Number of VMs"
+  type        = number
+  default     = 1
+}
+
+variable "vm_infra_name" {
+  description = "Name of the VM"
+  type        = string
+  default     = "infra"
 }
 
 variable "base_img_url" {
@@ -50,16 +60,10 @@ variable "libvirt_pool_path" {
   default     = "/srv/bmvl"
 }
 
-variable "vm_name" {
-  description = "Name of the VM"
-  type        = string
-  default     = "vgst"
-}
-
 variable "vm_size" {
   description = "Size of the VM (16 GiB)"
   type        = number
-  default     = 16 * 1024 * 1024 * 1024
+  default     = 32 * 1024 * 1024 * 1024
 }
 
 variable "vm_memory" {
@@ -71,5 +75,5 @@ variable "vm_memory" {
 variable "vm_cpus" {
   description = "CPUs of the VM (4)"
   type        = number
-  default     = 4
+  default     = 2
 }
