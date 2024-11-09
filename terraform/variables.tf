@@ -35,7 +35,7 @@ variable "base_img_url" {
 variable "libvirt_uri" {
   description = "libvirt_uri"
   type        = string
-  default     = "qemu+ssh://cees@srv02/system?known_hosts_verify=ignore"
+  default     = "qemu+ssh://cees@srv01/system?known_hosts_verify=ignore"
 }
 
 variable "libvirt_pool_name" {
@@ -53,7 +53,7 @@ variable "libvirt_pool_path" {
 variable "vm_name" {
   description = "Name of the VM"
   type        = string
-  default     = "ceph"
+  default     = "vgst"
 }
 
 variable "vm_size" {
