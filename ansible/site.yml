@@ -1,23 +1,23 @@
 ---
-- hosts: all
+- name: Common role
+  hosts: 
+    - all
   become: true
   roles:
-    # ==========================================================
-    # Upgrade is only executed when the tag 'upgrade' is used.
-    # ==========================================================
-    - role: upgrade
-      tags:
-        - upgrade
-        - never
-    
-    - role: common
-      tags:
-        - common
+    - common
 
-    - role: docker
-      tags:
-        - docker
+- name: Admin role
+  hosts: 
+    - admin
+  become: true
+  roles:
+    - admin
 
-    - role: terraform
-      tags:
-        - terraform
+- name: Docker role
+  hosts:
+    - admin 
+    - infra
+  become: true
+  roles:
+    - docker
+

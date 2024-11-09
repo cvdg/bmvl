@@ -1,4 +1,9 @@
 ---
+- name: packages install
+  ansible.builtin.package:
+    name: "{{ admin_packages }}"
+    state: present
+
 - name: Add Terraform GPG key
   ansible.builtin.apt_key:
     url: https://apt.releases.hashicorp.com/gpg 
