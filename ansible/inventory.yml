@@ -1,0 +1,14 @@
+---
+all:
+  hosts:
+    admin01:
+      ansible_host: 192.168.2.128
+    infra01:
+      ansible_host: 192.168.2.129
+  children:
+    admin:
+      hosts:
+        admin01:
+    infra:
+      hosts:
+        infra01:

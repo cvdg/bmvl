@@ -1,0 +1,10 @@
+---
+- hosts: admin
+  become: true
+  roles:
+    - role: common
+      tags: common
+    - role: docker
+      tags: docker
+    - role: terraform
+      tags: terraform
