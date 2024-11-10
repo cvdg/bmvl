@@ -1,3 +1,5 @@
+![Image of a bromvogel](https://images.app.goo.gl/bb8UXr8MgsY1pdiSA)
+
 # bmvl / bromvogel
 
 A `terraform` project to setup a homelab environment on
