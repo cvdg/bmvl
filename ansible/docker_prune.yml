@@ -1,0 +1,15 @@
+---
+- name: Docker prune
+  hosts: 
+  - all
+  become: true
+
+  tasks:
+  - name: Docker prune everythin
+    community.docker.docker_prune:
+      containers: true
+      images: true
+      networks: true
+      volumes: true
+      builder_cache: true
+    

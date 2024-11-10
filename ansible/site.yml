@@ -1,20 +1,20 @@
 ---
-- hosts: 
-  - all
+- name: Group admin 
+  hosts: 
+  - admin
   become: true
   roles:
   - common
-
-- hosts: 
-  - admin
-  become: true
-  roles:
   - admin
   - docker
 
-- hosts:
+- name: Group infra
+  hosts:
   - infra
   become: true
   roles:
+  - common
   - docker
+  - traefik
+  - portainer
 
