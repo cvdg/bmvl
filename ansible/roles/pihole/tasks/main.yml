@@ -1,0 +1,6 @@
+---
+- include_tasks: install.yml
+  when: not pihole_uninstall
+
+- include_tasks: uninstall.yml
+  when: pihole_uninstall

@@ -6,10 +6,10 @@ services:
   traefik:
     image: docker.io/library/traefik:{{ traefik_version }}
     container_name: traefik
-    restart: unless-stopped
     command:
       # Tell Traefik to discover containers using the Docker API
       - --providers.docker=true
+      - --providers.docker.network=traefik_default
       - --providers.docker.exposedbydefault=false
       # Enable the Trafik dashboard
       - --api.dashboard=true
@@ -48,3 +48,8 @@ services:
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
       - "traefik.http.routers.traefik.service=api@internal"
+    restart: unless-stopped
+
+networks:
+  traefik_default:
+    external: true

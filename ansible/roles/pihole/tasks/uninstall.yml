@@ -1,0 +1,10 @@
+---
+- name: Stop pihole
+  community.docker.docker_compose_v2:
+    project_src: /srv/portainer
+    state: absent
+
+- name: Remove deploy directory
+  ansible.builtin.file:
+    path: /srv/pihole
+    state: absent

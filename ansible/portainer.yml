@@ -1,5 +1,0 @@
----
-- hosts: infra
-  become: true
-  roles:
-  - role: portainer

@@ -1,8 +1,15 @@
 ---
-- hosts: infra
+- name: Group infra
+  hosts: infra
   become: true
   roles:
-    - role: common
-      tags: common
-    - role: docker
-      tags: docker
+  - role: common
+    tags: common
+  - role: docker
+    tags: docker
+  - role: traefik
+    tags: traefik
+  - role: portainer
+    tags: portainer
+  - role: pihole
+    tags: pihole
