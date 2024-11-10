@@ -29,6 +29,8 @@ services:
       - /srv/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_default"
       - "traefik.http.routers.portainer.entrypoints=web,websecure"
       - "traefik.http.routers.portainer.rule=Host(`portainer.griend.dev`)"
       - "traefik.http.routers.portainer.service=portainer-service"
