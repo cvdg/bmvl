@@ -1,14 +1,14 @@
 ---
 all:
   hosts:
-    admin01:
+    admin01.griend.dev:
       ansible_host: 192.168.2.128
-    infra01:
+    infra01.griend.dev:
       ansible_host: 192.168.2.129
   children:
     admin:
       hosts:
-        admin01:
+        admin01.griend.dev:
     infra:
       hosts:
-        infra01:
+        infra01.griend.dev:

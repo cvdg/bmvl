@@ -1,0 +1,11 @@
+---
+- name: Stop traefik
+  community.docker.docker_compose_v2:
+    project_src: /srv/traefik
+    state: absent
+
+- name: Remove deploy directory
+  ansible.builtin.file:
+    path: /srv/traefik
+    state: absent
+    recursive: true

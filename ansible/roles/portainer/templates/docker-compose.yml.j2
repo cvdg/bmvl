@@ -23,7 +23,19 @@ services:
       - TZ=Europe/Amsterdam    
     ports:
       - 9000:9000
+    networks:
+      - traefik_default
     volumes:
       - /srv/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.http.routers.portainer.entrypoints=web,websecure"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.griend.dev`)"
+      - "traefik.http.routers.portainer.service=portainer-service"
+      - "traefik.http.services.portainer-service.loadbalancer.server.port=9000"
+      - "traefik.http.routers.portainer.tls.certresolver=letsencrypt" 
     restart: unless-stopped
+
+networks:
+  traefik_default:
+    external: true

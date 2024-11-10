@@ -1,0 +1,6 @@
+---
+- include_tasks: install.yml
+  when: not traefik_uninstall
+
+- include_tasks: uninstall.yml
+  when: traefik_uninstall
