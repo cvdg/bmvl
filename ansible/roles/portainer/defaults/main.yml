@@ -1,0 +1,4 @@
+---
+agent_version: "latest"
+portainer_version: "latest"
+portainer_uninstall: false

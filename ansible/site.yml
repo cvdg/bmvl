@@ -1,23 +1,20 @@
 ---
-- name: Common role
-  hosts: 
-    - all
+- hosts: 
+  - all
   become: true
   roles:
-    - common
+  - common
 
-- name: Admin role
-  hosts: 
-    - admin
+- hosts: 
+  - admin
   become: true
   roles:
-    - admin
+  - admin
+  - docker
 
-- name: Docker role
-  hosts:
-    - admin 
-    - infra
+- hosts:
+  - infra
   become: true
   roles:
-    - docker
+  - docker
 

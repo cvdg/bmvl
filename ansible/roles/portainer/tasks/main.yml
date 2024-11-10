@@ -1,0 +1,6 @@
+---
+- include_tasks: install.yml
+  when: not portainer_uninstall
+
+- include_tasks: uninstall.yml
+  when: portainer_uninstall
